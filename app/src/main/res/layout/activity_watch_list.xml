@@ -9,11 +9,7 @@
             name="isLoading"
             type="Boolean" />
 
-        <variable
-            name="isLoadingMore"
-            type="Boolean" />
-
-        <import type="android.view.View"/>
+        <import type="android.view.View" />
 
     </data>
 
@@ -22,7 +18,7 @@
         android:layout_height="match_parent"
         android:animateLayoutChanges="true"
         android:background="@color/colorPrimary"
-        tools:context=".activities.MainActivity">
+        tools:context=".activities.WatchListActivity">
 
         <LinearLayout
             android:id="@+id/layoutHeader"
@@ -34,51 +30,36 @@
             android:padding="8dp"
             app:layout_constraintTop_toTopOf="parent">
 
+            <ImageView
+                android:id="@+id/imageBack"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_back"
+                app:tint="@color/colorTextIcons" />
+
             <TextView
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
-                android:layout_weight="1"
                 android:ellipsize="end"
                 android:fontFamily="@font/ubuntu_bold"
                 android:includeFontPadding="false"
                 android:maxLines="1"
-                android:text="@string/tv_shows_most_popular"
+                android:text="@string/watchlist"
                 android:textColor="@color/colorTextIcons"
-                android:textSize="14sp"/>
-
-            <ImageView
-                android:id="@+id/imageWatchlist"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginEnd="8dp"
-                android:contentDescription="@string/app_name"
-                android:padding="2dp"
-                android:src="@drawable/ic_watchlist"
-                app:tint="@color/colorTextIcons"/>
-
-            <ImageView
-                android:id="@+id/imageSearch"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginEnd="8dp"
-                android:contentDescription="@string/app_name"
-                android:padding="2dp"
-                android:src="@drawable/ic_search"
-                app:tint="@color/colorTextIcons"/>
+                android:textSize="14sp" />
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/tvShowsRecyclerView"
+            android:id="@+id/watchlistRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:clipToPadding="false"
             android:orientation="vertical"
-            android:paddingTop="4dp"
-            android:paddingEnd="4dp"
-            android:paddingStart="4dp"
-            android:paddingBottom="45dp"
+            android:padding="4dp"
+            android:visibility="gone"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/layoutHeader" />
@@ -86,19 +67,11 @@
         <ProgressBar
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:visibility="@{isLoading?View.VISIBLE:View.GONE, default=gone }"
+            android:layout_marginTop="20dp"
+            android:visibility="@{isLoading? View.VISIBLE:View.GONE, default=gone}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/layoutHeader"/>
-
-        <ProgressBar
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_marginBottom="12dp"
-            android:visibility="@{isLoadingMore?View.VISIBLE:View.GONE, default=gone }"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@id/layoutHeader" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

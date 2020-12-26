@@ -3,10 +3,17 @@ package com.stimednp.mvvmjava.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import com.google.gson.annotations.SerializedName;
 
-public class TVShow implements Parcelable {
+import java.io.Serializable;
 
+@Entity(tableName = "tvShows")
+public class TVShow implements Serializable {
+
+    @PrimaryKey
     @SerializedName("id")
     private int id;
 
@@ -33,33 +40,6 @@ public class TVShow implements Parcelable {
 
     @SerializedName("image_thumbnail_path")
     private String image_thumbnail_path;
-
-    public TVShow() {
-    }
-
-    public TVShow(Parcel in) {
-        id = in.readInt();
-        name = in.readString();
-        permalink = in.readString();
-        start_date = in.readString();
-        end_date = in.readString();
-        country = in.readString();
-        network = in.readString();
-        status = in.readString();
-        image_thumbnail_path = in.readString();
-    }
-
-    public static final Creator<TVShow> CREATOR = new Creator<TVShow>() {
-        @Override
-        public TVShow createFromParcel(Parcel in) {
-            return new TVShow(in);
-        }
-
-        @Override
-        public TVShow[] newArray(int size) {
-            return new TVShow[size];
-        }
-    };
 
     public int getId() {
         return id;
@@ -131,23 +111,5 @@ public class TVShow implements Parcelable {
 
     public void setImage_thumbnail_path(String image_thumbnail_path) {
         this.image_thumbnail_path = image_thumbnail_path;
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(id);
-        dest.writeString(name);
-        dest.writeString(permalink);
-        dest.writeString(start_date);
-        dest.writeString(end_date);
-        dest.writeString(country);
-        dest.writeString(network);
-        dest.writeString(status);
-        dest.writeString(image_thumbnail_path);
     }
 }
