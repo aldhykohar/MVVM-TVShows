@@ -15,6 +15,7 @@
         android:theme="@style/Theme.MVVMJava"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
+        <activity android:name=".activities.SearchActivity" />
         <activity android:name=".activities.WatchListActivity" />
         <activity android:name=".activities.TVShowDetailsActivity" />
         <activity android:name=".activities.MainActivity">
